@@ -52,7 +52,7 @@ export class App extends Component {
     );
     return (
       <div className={css.container}>
-        <h2 className={css.title}>Phonebook</h2>
+        <h1 className={css.title}>Phonebook</h1>
         <PhoneBook handlAddContact={this.handlAddContact} />
         <h2 className={css.title}>Contacts</h2>
         <ContactFilter
