@@ -12,13 +12,24 @@ export class PhoneBook extends Component {
       [event.target.name]: event.target.value,
     });
   };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.handlAddContact(this.state);
+    this.setState({
+      name: '',
+      number: '',
+    });
+  };
+
   render() {
     return (
       <div className={css.container}>
-        <form>
-          <label>
-            <span>Phonebook</span>
+        <form className={css.form} onSubmit={this.handleSubmit}>
+          <label className={css.label}>
+            Name
             <input
+              className={css.input}
               onChange={this.handleInputChange}
               value={this.state.name}
               type="text"
@@ -26,17 +37,21 @@ export class PhoneBook extends Component {
               required
             />
           </label>
-          <label>
-            <span>Number</span>
+          <label className={css.label}>
+            Number
             <input
+              className={css.input}
               onChange={this.handleInputChange}
               value={this.state.number}
               type="tel"
               name="number"
+              pattern="[\+]?[\d\s\(\)-]+"
               required
             />
           </label>
-          <button>Add contact</button>
+          <button className={css.button} type="submit">
+            Add contact
+          </button>
         </form>
       </div>
     );
